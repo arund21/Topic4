@@ -25,4 +25,14 @@
         android:background="@color/colorAccent"
         android:layout_margin="10dp"
         />
+    <Button
+        android:id="@+id/btnCallme"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Make a Call"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/btnOpenDictionary"
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="10dp"
+        />
 </RelativeLayout>
