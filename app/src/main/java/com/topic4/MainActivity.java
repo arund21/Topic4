@@ -9,43 +9,51 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
-    public static final String countries[] = {
-
-            "Nepal", "Kathmandu",
-            "India", "New Delhi",
-            "China", "Beijing",
-            "UK", "London",
-            "US", "Washington, D.C.",
-            "Canada", "Ottawa"
-
-    };
+    private ListView countriesList;
     private Map<String, String> dictionary;
+    private void readFromFile() {
+        try {
+            FileInputStream fos = openFileInput("countries.txt");
+            InputStreamReader isr = new InputStreamReader(fos);
+            BufferedReader br = new BufferedReader(isr);
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("->");
+                dictionary.put(parts[0], parts[1]);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView lstCountries = findViewById(R.id.countriesList);
+        countriesList = findViewById(R.id.countriesList);
         dictionary = new HashMap<>();
-        for (int i = 0; i < countries.length; i += 2) {
-            dictionary.put(countries[i], countries[i + 1]);
-        }
 
+        readFromFile();
 
         ArrayAdapter countryAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 new ArrayList<String>(dictionary.keySet())
         );
-        lstCountries.setAdapter(countryAdapter);
+        countriesList.setAdapter(countryAdapter);
 
-        lstCountries.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        countriesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String key = parent.getItemAtPosition(position).toString();
