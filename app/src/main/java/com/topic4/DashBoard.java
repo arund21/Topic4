@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class DashBoard extends AppCompatActivity {
-Button btnOpenDictionary,btnOpenCountry,btnCallme;
+Button btnOpenDictionary,btnOpenCountry,btnCallme,btnMyregister,btnMylogin,btnCamera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +16,9 @@ Button btnOpenDictionary,btnOpenCountry,btnCallme;
         btnOpenCountry = findViewById(R.id.btnOpenCountry);
         btnOpenDictionary = findViewById(R.id.btnOpenDictionary);
         btnCallme = findViewById(R.id.btnCallme);
+        btnMyregister = findViewById(R.id.btnMyregister);
+        btnMylogin = findViewById(R.id.btnMylogin);
+        btnCamera = findViewById(R.id.btnCamera);
 
         btnOpenDictionary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +40,27 @@ Button btnOpenDictionary,btnOpenCountry,btnCallme;
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashBoard.this,DialActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnMyregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashBoard.this,RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnMylogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashBoard.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashBoard.this,CameraApp.class);
                 startActivity(intent);
             }
         });

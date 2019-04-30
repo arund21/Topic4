@@ -35,4 +35,33 @@
         android:background="@color/colorPrimaryDark"
         android:layout_margin="10dp"
         />
+    <Button
+        android:id="@+id/btnMyregister"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/btnCallme"
+        android:background="@color/colorAccent"
+        android:layout_margin="10dp"
+        />
+    <Button
+        android:id="@+id/btnMylogin"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/btnMyregister"
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="10dp"
+        />
+    <Button
+        android:id="@+id/btnCamera"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Take Picture"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/btnMylogin"
+        android:background="@color/colorPrimaryDark"
+        />
 </RelativeLayout>
